@@ -1,0 +1,5 @@
+Resources
+
+1. To learn more about MongoDB and FastAPI:
+Read the blog "Getting Started with FastAPI and MongoDB"
+2.Explore tutorials on FastAPI in the Developer Center, including "Introducing the FARM Stack - FastAPI, React, and MongoDB"
