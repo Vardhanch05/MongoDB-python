@@ -2,14 +2,16 @@ from fastapi import FastAPI
 from motor.motor_asyncio import AsyncIOMotorClient
 from pymongo import *
 from fastapi import *
+import os
+from dotenv import load_dotenv
 
 from serializer import convert_doc, convert_doc_list
 
 from pydantic import BaseModel
 
-mongo_uri = "mongodb+srv://vardhanchilakamarri4567_db_user:Xc5EWD1hacvSY1yF@cluster0.mbxignd.mongodb.net/?appName=Cluster0"
+MONGODB_URI = os.getenv("MONGODB_URI")
 
-client = AsyncIOMotorClient(mongo_uri)
+client = AsyncIOMotorClient(MONGODB_URI)
 app = FastAPI()
 
 @app.get("/")
