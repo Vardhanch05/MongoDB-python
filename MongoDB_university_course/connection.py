@@ -2,8 +2,9 @@ import os
 from dotenv import load_dotenv
 from pymongo import MongoClient
 
+load_dotenv()
+
 # The Connection String (The Address)
-#PWD: Xc5EWD1hacvSY1yF
 MONGODB_URI = os.getenv("MONGODB_URI")
 
 client = MongoClient(MONGODB_URI)

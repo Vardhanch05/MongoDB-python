@@ -1,13 +1,14 @@
-from fastapi import FastAPI
-from motor.motor_asyncio import AsyncIOMotorClient
-from pymongo import *
-from fastapi import *
 import os
+
 from dotenv import load_dotenv
+from fastapi import FastAPI, HTTPException
+from motor.motor_asyncio import AsyncIOMotorClient
+from pymongo import ReturnDocument
+from pydantic import BaseModel
 
 from serializer import convert_doc, convert_doc_list
 
-from pydantic import BaseModel
+load_dotenv()
 
 MONGODB_URI = os.getenv("MONGODB_URI")
 
@@ -60,7 +61,7 @@ async def update_item(name:str, item: Item):
     )
     if updated_item:
         return {"message": "Item updated", "item": convert_doc(updated_item)}
-    raise HTTPException(status_code=404, detail=f"Item with name {name}not found")
+    raise HTTPException(status_code=404, detail=f"Item with name {name} not found")
 
 # we have to perform the UPDATE only after entering the data in the database.
 # if the update is successful, we can see the updated data in the Atlas Cluster as well

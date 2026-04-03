@@ -1,7 +1,14 @@
+import os
+import pprint
+
+from dotenv import load_dotenv
 from pymongo import MongoClient
 
+load_dotenv()
+MONGODB_URI = os.getenv("MONGODB_URI")
+
 # Connect to MongoDB
-client = MongoClient("mongodb://localhost:27017/")
+client = MongoClient(MONGODB_URI)
 
 # Create / access database
 db = client["company"]
@@ -40,4 +47,6 @@ result = collection.aggregate(pipeline)
 
 print("Department-wise Salary Analysis:")
 for doc in result:
-    print(doc)
+    pprint.pprint(doc)
+
+client.close()

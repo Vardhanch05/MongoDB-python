@@ -1,9 +1,16 @@
 # MongoDB Aggregation Pipeline Example using PyMongo
 
+import os
+import pprint
+
+from dotenv import load_dotenv
 from pymongo import MongoClient
 
+load_dotenv()
+MONGODB_URI = os.getenv("MONGODB_URI")
+
 # Connect to MongoDB server
-client = MongoClient("mongodb://localhost:27017/")
+client = MongoClient(MONGODB_URI)
 
 # Create / access database
 db = client["company"]
@@ -69,7 +76,9 @@ result = collection.aggregate(pipeline)
 # Print the results
 print("Aggregation Pipeline Result:\n")
 for doc in result:
-    print(doc)
+    pprint.pprint(doc)
+
+client.close()
 
 # Output:
 '''

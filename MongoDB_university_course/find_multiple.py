@@ -21,7 +21,6 @@ print("Documents found:")
 for doc in res:
     pprint.pprint(doc)
     num_docs += 1
-    pprint.pprint(doc)
 print(f"Total number of documents found: {num_docs}")
 
 client.close() # Close the connection to MongoDB
