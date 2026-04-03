@@ -40,6 +40,7 @@ pipeline = [
 
     # $unwind stage: split the skills array into separate documents
     {"$unwind": "$skills"},
+    
 
     # $group stage: group employees by department and calculate statistics
     {
